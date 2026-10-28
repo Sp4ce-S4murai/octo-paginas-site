@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* --- Tipografia --- */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+
+  /* --- Cores institucionais (site OCTO Páginas, 24/09/2026) ---
+     Usadas SÓ no site institucional (page.tsx, SiteHeader). As páginas
+     de nicho (odontologia/esteticas/oficinas/padarias) e as prévias de
+     lead continuam com ocean/growth/cta abaixo, sem mexer — são o
+     produto entregue ao cliente, escopo separado do visual da OCTO. */
+  --color-brand-50: #fdf2f4;
+  --color-brand-100: #fce4e8;
+  --color-brand-200: #f8c9d1;
+  --color-brand-300: #e8a2ae;
+  --color-brand-400: #c96b7c;
+  --color-brand-600: #952c44;
+  --color-brand-700: #742136;
+  --color-brand-800: #521824;
+  --color-brand-900: #38111a;
+
+  /* --- Cores Primárias (Azul Institucional - Confiança) --- */
+  --color-ocean-50: #eff6ff;
+  --color-ocean-100: #dbeafe;
+  --color-ocean-200: #bfdbfe;
+  --color-ocean-500: #2563eb;
+  --color-ocean-600: #1d4ed8;
+  --color-ocean-700: #1e40af;
+  --color-ocean-800: #1e3a8a;
+  --color-ocean-900: #1e3a5f;
+
+  /* --- Cores de Crescimento (Verde) --- */
+  --color-growth-50: #f0fdf4;
+  --color-growth-100: #dcfce7;
+  --color-growth-500: #22c55e;
+  --color-growth-600: #16a34a;
+
+  /* --- Cores CTA (Laranja Convidativo) --- */
+  --color-cta-300: #fdba74;
+  --color-cta-400: #fb923c;
+  --color-cta-500: #f97316;
+  --color-cta-600: #ea580c;
+  --color-cta-700: #c2410c;
+  --color-cta-800: #9a3412;
+
+  /* --- Cores Quentes (Destaque) --- */
+  --color-warm-50: #fffbeb;
+  --color-warm-100: #fef3c7;
+  --color-warm-400: #facc15;
+
+  /* --- Neutros --- */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+
+  /* --- Animações --- */
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out both;
+  --animate-slide-in-left: slide-in-left 0.5s ease-out both;
+  --animate-slide-in-right: slide-in-right 0.5s ease-out both;
+  --animate-bounce-gentle: bounce-gentle 2s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-float: float 3s ease-in-out infinite;
+}
+
+/* --- Keyframes --- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* --- Base --- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-slate-700);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Utilitários customizados --- */
+.gradient-ocean {
+  background: linear-gradient(135deg, var(--color-ocean-500), var(--color-ocean-700));
+}
+
+.gradient-cta {
+  /* Texto branco em cima precisa de >=4.5:1 (WCAG AA). cta-500/600 davam 2,8:1 e 3,6:1.
+     cta-700->cta-800 dá 5,2:1 a 7,3:1 — mantém o laranja, corrige a violação. */
+  background: linear-gradient(135deg, var(--color-cta-700), var(--color-cta-800));
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #f0fdf4 100%);
+}
+
+.gradient-hero-dark {
+  background: linear-gradient(135deg, var(--color-ocean-800) 0%, var(--color-ocean-900) 100%);
+}
+
+.text-gradient-ocean {
+  background: linear-gradient(135deg, var(--color-ocean-500), var(--color-ocean-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Institucional (24/09/2026) --- */
+.gradient-brand {
+  background: linear-gradient(135deg, var(--color-brand-600), var(--color-brand-800));
+}
+
+.gradient-hero-inst {
+  background: linear-gradient(180deg, #fdf6f2 0%, #ffffff 100%);
+}
+
+.gradient-dark-inst {
+  background: linear-gradient(135deg, var(--color-brand-800) 0%, var(--color-brand-900) 100%);
+}
+
+/* --- Animação de entrada observável --- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Glassmorphism --- */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

@@ -1,0 +1,124 @@
+.site {
+  container-type: inline-size;
+  container-name: site;
+  background: #f2f5f1;
+  color: #1d2420;
+  font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  line-height: 1.5;
+}
+.site * { box-sizing: border-box; }
+.page { max-width: 980px; margin: 0 auto; padding-bottom: 28px; }
+
+/* Toldo: listras + franja em semicírculos */
+.awning {
+  height: 46px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 28px, #fff 28px 56px);
+  box-shadow: inset 0 -10px 12px -10px rgba(0, 0, 0, 0.25);
+}
+.fringe {
+  height: 14px;
+  background:
+    radial-gradient(circle at 14px 0, var(--accent) 13.5px, transparent 14px) 0 0 / 56px 14px repeat-x,
+    radial-gradient(circle at 14px 0, #fff 13.5px, transparent 14px) 28px 0 / 56px 14px repeat-x;
+  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.18));
+}
+
+/* Placa */
+.plaque { padding: 28px 16px 8px; }
+.plaqueInner {
+  background: #fff;
+  border: 3px solid var(--deep);
+  outline: 1px solid var(--deep);
+  outline-offset: 4px;
+  padding: 26px 18px 24px;
+  text-align: center;
+}
+.ramo { margin: 0 0 10px; display: flex; align-items: center; gap: 12px; font-style: italic; color: var(--ink); font-size: 1rem; }
+.ramo::before, .ramo::after { content: ""; flex: 1; border-top: 1px solid var(--ink); }
+.nome {
+  margin: 0;
+  font-size: clamp(2rem, 11cqw, 3.4rem);
+  line-height: 1.04;
+  font-weight: 700;
+  color: var(--deep);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.sub { margin: 10px 0 0; font-size: 1.05rem; color: #3b4540; }
+.cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 13px 26px;
+  background: var(--deep);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 3px;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+.cta:focus-visible, .link:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+.sobre {
+  margin: 18px auto 0;
+  padding: 0 22px;
+  max-width: 52ch;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.row { display: grid; gap: 22px; padding: 22px 16px 0; align-items: start; }
+
+/* Quadro de serviços */
+.board {
+  background: var(--deep);
+  color: #fff;
+  padding: 22px 18px 20px;
+  border: 6px solid #e7dcc6;
+  outline: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15);
+}
+.boardTitle { margin: 0 0 12px; text-align: center; font-size: 1.5rem; font-style: italic; font-weight: 400; }
+.menu { list-style: none; margin: 0; padding: 0; text-align: center; }
+.menu li { padding: 9px 4px; font-size: 1.12rem; border-top: 1px dashed rgba(255, 255, 255, 0.45); overflow-wrap: anywhere; }
+.menu li:first-child { border-top: 0; }
+
+/* Placa pendurada */
+.hang { position: relative; padding-top: 34px; justify-self: center; width: min(100%, 360px); }
+.hang::before, .hang::after { content: ""; position: absolute; top: 0; width: 2px; height: 36px; background: #6b5d46; }
+.hang::before { left: 22%; }
+.hang::after { right: 22%; }
+.hangBody {
+  background: #e7dcc6;
+  border: 2px solid #6b5d46;
+  border-radius: 6px;
+  padding: 16px 18px;
+  text-align: center;
+}
+.hangTitle { margin: 0 0 6px; font-size: 1.2rem; font-style: italic; color: #3a2f1d; }
+.hangBody ul { list-style: none; margin: 0; padding: 0; }
+.hangBody li { padding: 3px 0; color: #2b2316; }
+
+.visit { margin: 26px 16px 0; padding: 20px 16px; text-align: center; border-top: 3px double var(--deep); }
+.visitTitle { margin: 0 0 6px; font-size: 1.35rem; color: var(--deep); }
+.addr { margin: 0 0 14px; }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.link {
+  padding: 11px 20px;
+  border: 2px solid var(--deep);
+  color: var(--deep);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 3px;
+  background: #fff;
+}
+.foot { margin-top: 18px; text-align: center; font-size: 0.9rem; color: #4a554f; padding: 0 16px; }
+
+@container site (min-width: 720px) {
+  .plaque { padding: 44px 40px 8px; }
+  .plaqueInner { padding: 44px 40px 40px; }
+  .row { grid-template-columns: 1.4fr 1fr; padding: 34px 40px 0; gap: 34px; }
+  .row:has(.board:only-child) { grid-template-columns: minmax(0, 520px); justify-content: center; }
+  .awning { height: 64px; background-size: 40px; }
+  .visit { margin: 34px 40px 0; }
+}

@@ -1,0 +1,49 @@
+.site {
+  container-type: inline-size;
+  container-name: site;
+  background: #fff;
+  color: #14201d;
+  font-family: "Avenir Next", Avenir, "Century Gothic", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.5;
+  min-height: 100%;
+}
+.site * { box-sizing: border-box; }
+.page { display: block; min-height: 100%; }
+
+.stage { background: var(--deep); color: #fff; padding: 56px 24px 40px; }
+.stageIn { max-width: 520px; }
+.nome {
+  margin: 0;
+  font-weight: 200;
+  font-size: clamp(2.8rem, 15cqw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+.sub { margin: 18px 0 0; font-size: 1.05rem; opacity: 0.92; font-weight: 300; }
+.cta {
+  display: inline-block; margin-top: 28px; padding: 14px 24px;
+  background: #fff; color: var(--deep); text-decoration: none; font-weight: 700;
+  border-radius: 999px;
+}
+.cta:focus-visible, .u:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.stage .cta:focus-visible { outline-color: #fff; }
+
+.content { padding: 36px 24px 48px; display: grid; gap: 34px; max-width: 640px; }
+.sobre { margin: 0; font-size: 1.15rem; font-weight: 300; max-width: 46ch; }
+.label { margin: 0 0 8px; font-size: 0.95rem; font-weight: 700; color: var(--ink); letter-spacing: 0.01em; }
+.services { list-style: none; margin: 0; padding: 0; }
+.services li {
+  font-size: clamp(1.5rem, 8cqw, 2.1rem); font-weight: 300; letter-spacing: -0.02em;
+  line-height: 1.2; padding: 8px 0; border-bottom: 1px solid #dfe6e3; overflow-wrap: anywhere;
+}
+.hours, .addr { margin: 0; padding: 0; list-style: none; font-size: 1.05rem; }
+.inline { margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.u { color: var(--deep); font-weight: 700; text-underline-offset: 4px; }
+
+@container site (min-width: 800px) {
+  .page { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); min-height: 640px; }
+  .stage { position: sticky; top: 0; align-self: start; min-height: 100cqh; display: flex; align-items: flex-end; padding: 56px 40px; }
+  .nome { font-size: clamp(3.4rem, 8cqw, 6rem); }
+  .content { padding: 64px 48px; max-width: none; }
+}
